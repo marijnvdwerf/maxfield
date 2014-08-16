@@ -37,6 +37,7 @@ Options:
 """
 
 import sys
+import csv
 from docopt import docopt
 
 import networkx as nx
@@ -90,9 +91,7 @@ def main():
 		i = 0
 		# each line should be id,name,lat,long,keys
 		with open(input_file,'r') as fin:
-			for line in fin:
-				parts = line.split(',')
-
+			for parts in csv.reader(fin):
 				if len(parts) < 3:
 					break
 
